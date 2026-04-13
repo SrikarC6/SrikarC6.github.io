@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="PureVibes is a minimal, high-fidelity macOS music player built in SwiftUI for listeners who care about local libraries, artwork, waveform detail, and native polish."
+    />
+    <meta name="theme-color" content="#000000" />
+    <title>PureVibes | High-Fidelity Local Music Player for macOS</title>
+    <link rel="preload" as="image" href="https://raw.githubusercontent.com/SrikarC6/PureVibes/main/assets/default-grid-view.png" fetchpriority="high" />
+    <link rel="preload" as="image" href="https://raw.githubusercontent.com/SrikarC6/PureVibes/main/assets/album-view.png" />
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body>
+    <div class="ambient ambient--blue" aria-hidden="true"></div>
+    <div class="ambient ambient--violet" aria-hidden="true"></div>
+    <div class="ambient ambient--ice" aria-hidden="true"></div>
+    <div class="site-shell">
+      <header class="site-header" id="top" data-reveal>
+        <a class="brand" href="#top" aria-label="PureVibes home">
+          <span class="brand__mark" aria-hidden="true">PV</span>
+          <span class="brand__text">PureVibes</span>
+        </a>
+
+        <nav class="site-nav" aria-label="Primary">
+          <a href="#why">Why It Hits</a>
+          <a href="#interface">Interface</a>
+          <a href="#architecture">Architecture</a>
+          <a href="#download">Download</a>
+        </nav>
+
+        <a class="button button--ghost" href="https://github.com/SrikarC6/PureVibes" target="_blank" rel="noreferrer">
+          View Source
+        </a>
+      </header>
+
+      <main>
+        <section class="hero section-grid">
+          <div class="hero__copy" data-reveal>
+            <p class="eyebrow">Native macOS music player</p>
+            <h1 class="display hero__title">PureVibes makes your local library feel like the headliner.</h1>
+            <p class="hero__lede">
+              Built in Swift and SwiftUI, PureVibes treats lossless files, carefully tagged albums, and artwork-first listening like
+              the main event, not an afterthought.
+            </p>
+
+            <div class="hero__actions">
+              <a
+                class="button button--primary"
+                href="https://github.com/SrikarC6/PureVibes/releases/latest"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Download Latest Release
+              </a>
+              <a class="button button--secondary" href="#interface">See the Interface</a>
+            </div>
+
+            <ul class="hero__chips" aria-label="Key platform details">
+              <li>macOS Sonoma+</li>
+              <li>SwiftUI + AVFoundation</li>
+              <li>No Electron</li>
+            </ul>
+
+            <dl class="hero__stats">
+              <div class="stat-card surface">
+                <dt>Waveform Cache</dt>
+                <dd>60-step RMS map</dd>
+              </div>
+              <div class="stat-card surface">
+                <dt>Artwork Strategy</dt>
+                <dd>3-tier image cache</dd>
+              </div>
+              <div class="stat-card surface">
+                <dt>Readability</dt>
+                <dd>BT.709 luminance</dd>
+              </div>
+              <div class="stat-card surface">
+                <dt>Formats</dt>
+                <dd>ALAC, FLAC, MP3, WAV, OGG</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="hero__stage surface" data-reveal data-tilt-root>
+            <div class="search-shell mono" aria-hidden="true">
+              <span class="search-shell__icon">⌕</span>
+              <span>Search albums or artists...</span>
+            </div>
+
+            <div class="hero__stack">
+              <figure class="screen-card screen-card--back" data-tilt-layer="back">
+                <img
+                  src="https://raw.githubusercontent.com/SrikarC6/PureVibes/main/assets/welcome-screen.png"
+                  alt="PureVibes welcome screen with glowing wordmark and call-to-action button"
+                  loading="eager"
+                  decoding="async"
+                />
+              </figure>
+
+              <figure class="screen-card screen-card--primary" data-tilt-layer="mid">
+                <img
+                  src="https://raw.githubusercontent.com/SrikarC6/PureVibes/main/assets/default-grid-view.png"
+                  alt="PureVibes grid view with rounded album art, monospaced metadata, and dark glass controls"
+                  loading="eager"
+                  decoding="async"
+                />
+              </figure>
+
+              <figure class="screen-card screen-card--floating" data-tilt-layer="front">
+                <img
+                  src="https://raw.githubusercontent.com/SrikarC6/PureVibes/main/assets/queue-menu.png"
+                  alt="PureVibes queue panel floating above the library interface"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+            </div>
+
+            <div class="hero-player surface surface--pill" data-tilt-layer="front" aria-hidden="true">
+              <div class="hero-player__meta">
+                <span class="hero-player__dot"></span>
+                <strong class="display">Now Playing</strong>
+                <span class="mono">Tailor Swif • A$AP Rocky</span>
+              </div>
+
+              <div class="waveform" role="presentation">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+
+              <div class="hero-player__controls mono">
+                <span>⟲</span>
+                <span>◀</span>
+                <span class="hero-player__play">▶</span>
+                <span>▶▶</span>
+                <span>✦</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="marquee-strip section-grid" aria-label="PureVibes signature traits" data-reveal>
+          <div class="marquee-strip__shell surface surface--pill">
+            <div class="marquee-track">
+              <div class="marquee-group mono">
+                <span>Lossless rips</span>
+                <span>Apple Digital Masters</span>
+                <span>Waveform cache</span>
+                <span>Security-scoped bookmarks</span>
+                <span>Queue-aware shuffle</span>
+                <span>Native SwiftUI</span>
+                <span>Artwork-first browsing</span>
+              </div>
+              <div class="marquee-group mono" aria-hidden="true">
+                <span>Lossless rips</span>
+                <span>Apple Digital Masters</span>
+                <span>Waveform cache</span>
+                <span>Security-scoped bookmarks</span>
+                <span>Queue-aware shuffle</span>
+                <span>Native SwiftUI</span>
+                <span>Artwork-first browsing</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="story section-grid" id="why">
+          <div class="section-heading" data-reveal>
+            <p class="eyebrow">Why It Hits</p>
+            <h2 class="display">A local-library player with taste, speed, and native restraint.</h2>
+          </div>
+
+          <div class="story__grid">
+            <article class="story-quote surface" data-reveal>
+              <p class="display story-quote__line">
+                “Most music players treat local libraries as a downgrade from streaming. PureVibes treats them as the main event.”
+              </p>
+              <p class="story-quote__support mono">
+                That attitude drives everything here: OLED-black presentation, artwork-led browsing, responsive queue controls, and a
+                player that feels native because it is native.
+              </p>
+            </article>
+
+            <div class="feature-stack" data-reveal>
+              <article class="feature-card surface">
+                <span class="feature-card__index mono">01</span>
+                <h3 class="display">Album art does the talking</h3>
+                <p>
+                  Rounded covers, cinematic spacing, glass surfaces, and elegant serif typography make the UI feel closer to a
+                  collector’s shelf than a spreadsheet.
+                </p>
+              </article>
+
+              <article class="feature-card surface">
+                <span class="feature-card__index mono">02</span>
+                <h3 class="display">Waveforms without the lag</h3>
+                <p>
+                  RMS waveform maps are computed once, cached to CoreData, and reused instantly so scrub feedback feels immediate even
+                  in large libraries.
+                </p>
+              </article>
+
+              <article class="feature-card surface">
+                <span class="feature-card__index mono">03</span>
+                <h3 class="display">Metadata with real depth</h3>
+                <p>
+                  Apple Digital Master detection, advisory badges, bitrate quality tiers, and artwork fallbacks all surface the kind of
+                  detail library obsessives actually notice.
+                </p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="showcase section-grid" id="interface">
+          <div class="section-heading" data-reveal>
+            <p class="eyebrow">Interface</p>
+            <h2 class="display">Every screen keeps the same rhythm: black glass, precise type, and album-first focus.</h2>
+          </div>
+
+          <div class="showcase__layout">
+            <div class="showcase__panel surface" data-reveal>
+              <div class="showcase__panel-head">
+                <span class="mono">Interface Preview</span>
+                <span class="showcase__caption mono" data-shot-caption>Grid view with floating playback chrome</span>
+              </div>
+
+              <div class="showcase__viewport">
+                <img
+                  src="https://raw.githubusercontent.com/SrikarC6/PureVibes/main/assets/default-grid-view.png"
+                  alt="PureVibes grid view"
+                  class="showcase__image"
+                  id="shot-image"
+                  loading="eager"
+                  decoding="async"
+                />
+              </div>
+            </div>
+
+            <div class="showcase__copy" data-reveal>
+              <div class="showcase__copy-head">
+                <p class="eyebrow">Real Screenshots</p>
+                <h3 class="display" id="shot-title">Browse in an artwork-led grid</h3>
+                <p id="shot-body">
+                  The main library view balances huge album covers, understated search, and a floating mini-player so the interface
+                  stays visually quiet until the music needs attention.
+                </p>
+              </div>
+
+              <ul class="showcase__points mono" id="shot-points">
+                <li>Rounded album cards with soft borders and native-feeling depth</li>
+                <li>Monospaced support text keeps metadata readable without competing for focus</li>
+                <li>Playback controls stay docked like a polished desktop utility, not a web widget</li>
+              </ul>
+
+              <div class="shot-tabs" role="tablist" aria-label="PureVibes interface screenshots">
+                <button
+                  class="shot-tab is-active"
+                  type="button"
+                  role="tab"
+                  aria-selected="true"
+                  data-shot="grid"
+                >
+                  <img src="https://raw.githubusercontent.com/SrikarC6/PureVibes/main/assets/default-grid-view.png" alt="" loading="lazy" decoding="async" />
+                  <span>
+                    <strong class="display">Grid</strong>
+                    <small class="mono">Library overview</small>
+                  </span>
+                </button>
+
+                <button class="shot-tab" type="button" role="tab" aria-selected="false" data-shot="album">
+                  <img src="https://raw.githubusercontent.com/SrikarC6/PureVibes/main/assets/album-view.png" alt="" loading="lazy" decoding="async" />
+                  <span>
+                    <strong class="display">Album</strong>
+                    <small class="mono">Track detail</small>
+                  </span>
+                </button>
+
+                <button class="shot-tab" type="button" role="tab" aria-selected="false" data-shot="queue">
+                  <img src="https://raw.githubusercontent.com/SrikarC6/PureVibes/main/assets/queue-menu.png" alt="" loading="lazy" decoding="async" />
+                  <span>
+                    <strong class="display">Queue</strong>
+                    <small class="mono">Glass popup</small>
+                  </span>
+                </button>
+
+                <button class="shot-tab" type="button" role="tab" aria-selected="false" data-shot="favorites">
+                  <img src="https://raw.githubusercontent.com/SrikarC6/PureVibes/main/assets/favorites-view.png" alt="" loading="lazy" decoding="async" />
+                  <span>
+                    <strong class="display">Favorites</strong>
+                    <small class="mono">Saved highlights</small>
+                  </span>
+                </button>
+
+                <button class="shot-tab" type="button" role="tab" aria-selected="false" data-shot="welcome">
+                  <img src="https://raw.githubusercontent.com/SrikarC6/PureVibes/main/assets/welcome-screen.png" alt="" loading="lazy" decoding="async" />
+                  <span>
+                    <strong class="display">Welcome</strong>
+                    <small class="mono">First launch</small>
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="details section-grid">
+          <div class="details__rail" data-reveal>
+            <article class="detail-card surface">
+              <p class="eyebrow">Playback</p>
+              <h3 class="display">Queue management that behaves like a desktop app.</h3>
+              <p>
+                Drag-to-reorder, play-next, add-to-end, loop modes, shuffle recovery, and media key support keep playback control close
+                at hand without bloating the main view.
+              </p>
+            </article>
+
+            <article class="detail-card surface">
+              <p class="eyebrow">Metadata</p>
+              <h3 class="display">Apple Digital Master detection built from raw atoms.</h3>
+              <p>
+                Instead of hand-wavy labels, PureVibes checks `flvr`, `atID`, `cnID`, and ownership markers so surfaced metadata is tied
+                to real file information.
+              </p>
+            </article>
+
+            <article class="detail-card surface">
+              <p class="eyebrow">Performance</p>
+              <h3 class="display">Large libraries stay smooth by design.</h3>
+              <p>
+                Adaptive performance modes, thermal-aware caching, and lazy metadata resolution keep the UI responsive as collections
+                scale up.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="architecture section-grid" id="architecture">
+          <div class="section-heading" data-reveal>
+            <p class="eyebrow">Architecture</p>
+            <h2 class="display">Under the glass, the engineering is as deliberate as the UI.</h2>
+          </div>
+
+          <div class="architecture__grid">
+            <article class="architecture-card surface" data-reveal>
+              <p class="mono architecture-card__label">System Notes</p>
+              <ul class="architecture-list mono">
+                <li><strong>Artwork cache:</strong> full-res cache, thumbnail cache, and dominant-color memory layer</li>
+                <li><strong>Waveform engine:</strong> chunked PCM sampling with persisted RMS energy maps</li>
+                <li><strong>Contrast logic:</strong> ITU-R BT.709 luminance for readable overlays on artwork</li>
+                <li><strong>Library access:</strong> security-scoped bookmarks for multi-folder persistence</li>
+                <li><strong>Track resolution:</strong> bounded LRU metadata loading for better scaling</li>
+              </ul>
+            </article>
+
+            <article class="architecture-card architecture-card--highlight surface" data-reveal>
+              <p class="eyebrow">Built With</p>
+              <h3 class="display">SwiftUI, AVFoundation, CoreData, and MediaPlayer.</h3>
+              <p>
+                No browser shell. No web view wrapper. Just a focused native stack tuned for music playback, artwork handling, and Now
+                Playing integration on macOS.
+              </p>
+              <div class="stack-tags mono">
+                <span>Swift 5.9+</span>
+                <span>SwiftUI</span>
+                <span>AVFoundation</span>
+                <span>CoreData</span>
+                <span>MediaPlayer</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="download section-grid" id="download">
+          <article class="download-card surface" data-reveal>
+            <p class="eyebrow">Download</p>
+            <h2 class="display">PureVibes is ready when your library is.</h2>
+            <p>
+              Grab the latest release for macOS, or dive into the source if you want to study the implementation behind the player,
+              waveform engine, and artwork-driven UI.
+            </p>
+
+            <div class="download-card__actions">
+              <a
+                class="button button--primary"
+                href="https://github.com/SrikarC6/PureVibes/releases/latest"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Get the Latest Release
+              </a>
+              <a
+                class="button button--ghost"
+                href="https://github.com/SrikarC6/PureVibes/issues/new"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Report a Bug
+              </a>
+            </div>
+
+            <p class="download-card__note mono">
+              Distributed outside the App Store. A first-launch Gatekeeper approval may be required in macOS Privacy &amp; Security.
+            </p>
+          </article>
+        </section>
+      </main>
+
+      <footer class="site-footer surface" data-reveal>
+        <div>
+          <p class="display">PureVibes</p>
+          <p class="mono">Made for listeners who still care about their files.</p>
+        </div>
+        <div class="site-footer__links mono">
+          <a href="https://github.com/SrikarC6/PureVibes" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://github.com/SrikarC6/PureVibes/releases/latest" target="_blank" rel="noreferrer">Latest Release</a>
+          <span>© <span data-year></span> PureVibes</span>
+        </div>
+      </footer>
+    </div>
+
+    <script type="module" src="scripts/main.js"></script>
+  </body>
+</html>
